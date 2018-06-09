@@ -10,12 +10,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: template-cache-{{ checksum "package.json" }}
+          key: template-cache-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install npm dependencies
           command: npm install
       - save_cache:
-          key: template-cache-{{ checksum "package.json" }}
+          key: template-cache-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
           paths:
             - node_modules
       - run:
@@ -42,12 +42,12 @@ jobs:
       - attach_workspace:
           at: '~/project/webpack-template'
       - restore_cache:
-          key: template-cache-minimal-{{ checksum "package.json" }}
+          key: template-cache-minimal-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install npm dependencies
           command: npm install
       - save_cache:
-          key: template-cache-minimal-{{ checksum "package.json" }}
+          key: template-cache-minimal-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
           paths:
             - node_modules
       - run:
@@ -63,12 +63,12 @@ jobs:
       - attach_workspace:
           at: '~/project/webpack-template'
       - restore_cache:
-          key: template-cache-full-{{ checksum "package.json" }}
+          key: template-cache-full-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install npm dependencies
           command: npm install
       - save_cache:
-          key: template-cache-full-{{ checksum "package.json" }}
+          key: template-cache-full-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
           paths:
             - node_modules
       - run:
@@ -100,12 +100,12 @@ jobs:
       - attach_workspace:
           at: '~/project/webpack-template'
       - restore_cache:
-          key: template-cache-full-karma-airbnb-{{ checksum "package.json" }}
+          key: template-cache-full-karma-airbnb-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install npm dependencies
           command: npm install
       - save_cache:
-          key: template-cache-full-karma-airbnb-{{ checksum "package.json" }}
+          key: template-cache-full-karma-airbnb-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
           paths:
             - node_modules
       - run:
